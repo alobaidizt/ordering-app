@@ -1,0 +1,19 @@
+form#checkout-form action="/transaction-endpoint" method="post"
+  #error-message
+
+  label for="card-number"
+    | Card Number
+  .hosted-field#card-number
+
+  label for="cvv"
+    | CVV
+  .hosted-field#cvv
+
+  label for="expiration-date"
+    | Expiration Date
+  .hosted-field#expiration-date
+
+  input type="hidden" name="payment-method-nonce"
+  input type="submit" value="Pay $10" disabled=true
+
+= yield

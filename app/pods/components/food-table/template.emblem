@@ -1,0 +1,17 @@
+.layout-row.layout-xs-column
+  .layout-column.flex-xs.flex-gt-xs-50
+    = paper-card as |card|
+      = card.title as |title|
+        = title.text as |text|
+          = text.headline
+            | Card with image
+          = text.subhead
+            | Large
+        = title.media size="lg" src="http://4.bp.blogspot.com/-8W1hpjDzcD4/UqUXJVClimI/AAAAAAAAC6Y/rR8X7jd1YzU/s1600/DSC01115.JPG" alt="Burger" title="Burger"
+      = card.actions
+        = paper-button click=(action 'order' 'burger')
+          | Order
+        = paper-button
+          | Gift
+
+= yield

@@ -4,8 +4,11 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'ordering-app',
     environment: environment,
-    baseURL: '/',
-    locationType: 'auto',
+    podModulePrefix: 'ordering-app/pods',
+    baseURL: '/', /* needed for cordova */
+    rootURL: '/',
+    locationType: 'hash',
+    defaultLocationType: 'auto',
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -16,15 +19,39 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+    },
+
+    contentSecurityPolicy: {
+      'default-src': "'none'",
+      'script-src': "'self' 'unsafe-inline'",
+      'style-src': "'self' 'unsafe-inline' https://fonts.googleapis.com",
+      'font-src': "'self' fonts.gstatic.com",
+      'connect-src': "'self'",
+      'img-src': "'self' data:",
+      'media-src': "'self'"
+    },
+
+    emblemOptions: {
+      blueprints: false,
+      quiet: true
+    },
+
+    coffeeOptions: {
+      blueprints: false
+    },
+
+    cordova: {
+      rebuildOnChange: false,
+      emulate: false
     }
-  };
+  }
 
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
-    // ENV.APP.LOG_ACTIVE_GENERATION = true;
+    ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
-    // ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV.APP.LOG_VIEW_LOOKUPS = true;
   }
 
   if (environment === 'test') {
@@ -40,8 +67,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
   }
 
   return ENV;
-};
+  }
